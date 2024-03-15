@@ -2,7 +2,6 @@ Librerías a utilizar:
 # Tratamiento de datos
 
  pandas 
-
  numpy
 
 # Preprocesado y modelado
@@ -13,7 +12,6 @@ Librerías a utilizar:
 # Visualización
 
  matplotlib.pyplot
-
  seaborn
 
 
@@ -84,3 +82,4 @@ mean_absolute_error
 
 pmdarima 
 ARIMA
+
