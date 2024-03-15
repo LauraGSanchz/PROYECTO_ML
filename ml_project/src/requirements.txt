@@ -1,0 +1,86 @@
+Librerías a utilizar:
+# Tratamiento de datos
+
+ pandas 
+
+ numpy
+
+# Preprocesado y modelado
+ scipy.stats :  skew, shapiro
+ scipy.stats:  norm
+ sklearn.feature_selection :  SelectKBest
+
+# Visualización
+
+ matplotlib.pyplot
+
+ seaborn
+
+
+# Modelos
+ sklearn.model_selection 
+ train_test_split, cross_val_score
+
+ sklearn.preprocessing 
+ StandardScaler,FunctionTransformer
+
+ sklearn.compose 
+ ColumnTransformer
+
+ sklearn.pipeline 
+ make_pipeline
+
+ sklearn.linear_model 
+ LinearRegression, Ridge, Lasso, ElasticNet
+
+ sklearn.svm 
+ SVR
+
+ sklearn.metrics 
+ mean_squared_error, mean_absolute_percentage_error,mean_absolute_error
+
+ sklearn.model_selection 
+ GridSearchCV
+
+ sklearn.tree 
+  DecisionTreeRegressor
+
+ sklearn.ensemble 
+   RandomForestRegressor
+
+ sklearn.neighbors 
+ KNeighborsRegressor
+
+ sklearn.experimental 
+ enable_hist_gradient_boosting
+
+ sklearn.ensemble 
+  GradientBoostingRegressor
+
+ sklearn.ensemble 
+ AdaBoostRegressor
+
+ catboost 
+ CatBoostClassifier
+
+ xgboost 
+ XGBRegressor 
+
+# skforecast
+skforecast.Sarimax
+Sarimax
+
+skforecast.ForecasterSarimax 
+ForecasterSarimax
+
+skforecast.model_selection_sarimax 
+backtesting_sarimax
+
+skforecast.model_selection_sarimax 
+grid_search_sarimax
+
+sklearn.metrics 
+mean_absolute_error
+
+pmdarima 
+ARIMA
