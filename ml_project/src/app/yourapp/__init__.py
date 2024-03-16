@@ -1,0 +1,1 @@
+"""inicaliza la app y ensambla los componentes"""

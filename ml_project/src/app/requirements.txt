@@ -1,0 +1,22 @@
+# Tratamiento de datos
+pandas
+numpy
+
+# Preprocesado y modelado
+scipy
+scikit-learn
+seaborn
+
+# Visualización
+matplotlib
+
+# Modelos
+scikit-learn
+catboost
+xgboost
+skforecast
+pmdarima
+pickle
+
+
+flask
