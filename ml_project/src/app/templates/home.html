@@ -1,6 +1,55 @@
 <!DOCTYPE html>
-<html>
-<h1>¡Este es el lugar donde decimos FLASK! :)</h1>
-<h2>subtitulo :)</h2>
-
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+    <style>
+        body {
+            background-image: url('https://aesval.es/wp-content/uploads/2022/09/la-energia-eolica.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: rgb(247, 243, 243);
+            text-align: center;
+            padding: 50px;
+        }
+        .texto-fondo {
+            background-color: rgba(236, 230, 230, 0.5); /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .boton {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #c9d9ca;
+            color: white;
+            font-size: 16px;
+        }
+        .boton:hover {
+            background-color: #727572;
+        }
+    </style>
+</head>
+<body>
+    <div class="texto-fondo">
+        <h1>Modelo de predicción del precio de la energía</h1>
+        <p>¡Hola! Esta API te permite explorar un dataset que contiene variables que explican el precio de la energía en España desde el 2016. Puedes hacer predicciones sobre el precio futuro.</p>
+        <p>Selecciona una opción:</p>
+        <button class="boton" onclick="redirectToPrediction()">Hacer Predicción</button>
+    </div>
+    <script>
+        function redirectToPrediction() {
+            window.location.href = '/predict_form';
+        }
+    </script>
+</body>
 </html>

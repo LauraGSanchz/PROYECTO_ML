@@ -1,1 +1,0 @@
-"""se definen las rutas de la app que se realizan, con vistas relacionadas y organizadas"""

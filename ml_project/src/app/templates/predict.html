@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Predicción</title>
+    <style>
+        body {
+            background-image: url('https://aesval.es/wp-content/uploads/2022/09/la-energia-eolica.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: rgb(247, 243, 243);
+            text-align: center;
+            padding: 50px;
+        }
+        .texto-fondo {
+            background-color: rgba(236, 230, 230, 0.5); /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #050505;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #c9d9ca;
+            color: white;
+        }
+        input[type="button"]:hover {
+            background-color: #727572;
+        }
+    </style>
+</head>
+<body>
+    <div class="texto-fondo">
+        <h1>Vamos a ayudarte a predecir el precio de la energía en los próximos días</h1>
+        <p>Por favor ingresa el número de días a futuro que quieres predecir:</p>
+        
+        <form id="predictForm" action="/predict" method="post">
+            <label for="steps">Número de pasos:</label>
+            <input type="text" id="steps" name="steps" required>
+            <br>
+            <input type="submit" value="Realizar Predicción">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('predictForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            submitForm();
+        });
+
+        function submitForm() {
+            var steps = document.getElementById('steps').value;
+            var formData = { 'steps': steps };
+
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Redireccionar a la página de resultados
+                window.location.href = '/predict';  // Cambia '/predict' a la ruta correcta
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
+
+

@@ -34,10 +34,5 @@ def user(name):
 
 
 
-
-
-
-
-
 if __name__ == '__main__':
     app.run(port=5000, debug=True) #debug false hace que no se actualice la app y no se vean los cambos automaticamente en la web. No se puede dejar en true cuando subo la app. 
