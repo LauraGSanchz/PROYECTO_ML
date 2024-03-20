@@ -11,7 +11,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             font-family: Arial, sans-serif;
-            color: rgb(247, 243, 243);
+            color: rgb(5, 5, 5);
             text-align: center;
             padding: 50px;
         }
@@ -38,16 +38,19 @@
             border: 1px solid #050505;
             border-radius: 5px;
         }
-        input[type="button"] {
+        input[type="file"] {
+            margin-top: 10px;
+        }
+        input[type="submit"] {
             padding: 10px 20px;
             font-size: 16px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             background-color: #c9d9ca;
-            color: white;
+            color: rgb(10, 9, 9);
         }
-        input[type="button"]:hover {
+        input[type="submit"]:hover {
             background-color: #727572;
         }
     </style>
@@ -57,12 +60,17 @@
         <h1>Vamos a ayudarte a predecir el precio de la energía en los próximos días</h1>
         <p>Por favor ingresa el número de días a futuro que quieres predecir:</p>
         
-        <form id="predictForm" action="/predict" method="post">
-            <label for="steps">Número de pasos:</label>
+        <form id="predictForm" action="/predict" method="post" enctype="multipart/form-data">
+            <label for="steps">Número de pasos a predecir:</label>
             <input type="text" id="steps" name="steps" required>
+            <br>
+            <label for="file">Cargar DataFrame CSV:</label>
+            <input type="file" id="file" name="data" accept=".csv" required>
             <br>
             <input type="submit" value="Realizar Predicción">
         </form>
+
+        <div id="predictions"></div>
     </div>
 
     <script>
@@ -73,19 +81,21 @@
 
         function submitForm() {
             var steps = document.getElementById('steps').value;
-            var formData = { 'steps': steps };
+            var fileInput = document.getElementById('file');
+            var file = fileInput.files[0];
+
+            var formData = new FormData();
+            formData.append('steps', steps);
+            formData.append('data', file);
 
             fetch('/predict', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
+                body: formData
             })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(data => {
-                // Redireccionar a la página de resultados
-                window.location.href = '/predict';  // Cambia '/predict' a la ruta correcta
+                // Mostrar las predicciones en la página actual
+                document.getElementById('predictions').innerText = JSON.stringify(data);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -94,5 +104,3 @@
     </script>
 </body>
 </html>
-
-

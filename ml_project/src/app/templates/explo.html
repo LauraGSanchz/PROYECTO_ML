@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploración del Proyecto</title>
+    <style>
+        body {
+            background-image: url('https://aesval.es/wp-content/uploads/2022/09/la-energia-eolica.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 50px;
+        }
+        .texto-fondo {
+            background-color: rgba(236, 230, 230, 0.5); /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .boton {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #c9d9ca;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+        }
+        .boton:hover {
+            background-color: #727572;
+        }
+        .imagen-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .imagen-container img {
+            width: 800px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .imagen-container.para-derecha {
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .imagen-container.para-derecha img {
+            margin-right: 20px;
+        }
+        .imagen-container.para-derecha .descripcion {
+            text-align: left;
+        }
+        .imagen-container .descripcion {
+            text-align: center;
+        }
+        .imagen-container p {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="texto-fondo">
+        <h1>Exploración del Proyecto</h1>
+        <p>Aquí puedes explorar más sobre nuestro proyecto, incluyendo imágenes y datos.</p>
+        
+        <!-- Contenido adicional con imágenes, título y descripción -->
+        <div class="imagen-container">
+            <img src="/static/ej_esatcionalidad_dom_fest.png" alt="Imagen 1">
+            <p>Título de la imagen 1</p>
+            <p>Descripción de la imagen 1</p>
+        </div>
+
+        <div class="imagen-container">
+            <img src="/static/seasonal_plot.png" alt="Imagen 2">
+            <p>Título de la imagen 2</p>
+            <p>Descripción de la imagen 2</p>
+        </div>
+
+        <div class="imagen-container para-derecha">
+            <img src="/static/test_estacionaridad.png" alt="Imagen 3">
+            <div class="descripcion">
+                <p>TEST DE ESTACIONARIDAD</p>
+                <p>Test estacionariedad serie original</p>
+                <hr>
+                <p>ADF Statistic: -5.947547831709342, p-value: 2.1859909675353553e-07</p>
+                <p>KPSS Statistic: 17.11029737480388, p-value: 0.01</p>
+                <hr>
+                <p>Test estacionariedad para serie diferenciada (order=1)</p>
+                <hr>
+                <p>ADF Statistic: -42.95828626958498, p-value: 0.0</p>
+                <p>KPSS Statistic: 0.02686913174244417, p-value: 0.1</p>
+                <hr>
+                <p>Test estacionariedad para serie diferenciada (order=2)</p>
+                <hr>
+                <p>ADF Statistic: -59.858467771039244, p-value: 0.0</p>
+                <p>KPSS Statistic: 0.005492831701150309, p-value: 0.1</p>
+            </div>
+        </div>
+
+        <div class="imagen-container">
+            <img src="/static/autocorrelacion.png" alt="Imagen 4">
+            <p>Autocorrelación serie diferenciada</p>
+            <p>Descripción de la imagen 4</p>
+        </div>
+
+
+        <div class="imagen-container">
+            <img src="/static/predictions_ex_3.png" alt="Imagen 4">
+            <p>Predicciones del modelo Forecaster Sarimax </p>
+            <p>Test error (mse): 37.429744773866766</p>
+        </div>
+        <!-- Botón para volver a la página principal -->
+        <a href="/"><button class="boton">Volver al Inicio</button></a>
+    </div>
+</body>
+</html>
