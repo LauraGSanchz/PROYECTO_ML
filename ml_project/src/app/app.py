@@ -32,6 +32,12 @@ def prediction_form():
 def exploracion():
     return render_template('explo.html')
 
+@app.route('/exploracion2', methods=['GET'])
+def exploracion2():
+    return render_template('explo2.html')
+
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     global modelo

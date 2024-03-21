@@ -60,35 +60,32 @@ def plot_correlation_heatmap(data):
     plt.show()
 
 
+def plot_boxplots(df, columns_per_row):
+    #VARIOS GRAFICOS EN LA MISMA FIGURA##
 
-#VARIOS GRAFICOS EN LA MISMA FIGURA##
+      # Iterate over each column and create a separate boxplot
+    num_columns = len(df.columns)
+    num_rows = -(-num_columns // columns_per_row)  # Ceiling division to calculate the number of rows needed
+    fig, axes = plt.subplots(num_rows, columns_per_row, figsize=(12, 6))
 
-# Define the number of columns per row
-columns_per_row = 4
+    # Flatten the axes array if only one row is needed
+    if num_rows == 1:
+        axes = axes.reshape(1, -1)
 
-# Iterate over each column and create a separate boxplot
-num_columns = len(df.columns)
-num_rows = -(-num_columns // columns_per_row)  # Ceiling division to calculate the number of rows needed
-fig, axes = plt.subplots(num_rows, columns_per_row, figsize=(12, 6))
+    for i, column in enumerate(df.columns):
+        row = i // columns_per_row
+        col = i % columns_per_row
+        sns.boxplot(data=df[column], ax=axes[row, col])
+        axes[row, col].set_title(f'Boxplot of {column}')
 
-# Flatten the axes array if only one row is needed
-if num_rows == 1:
-    axes = axes.reshape(1, -1)
+    # Hide any unused subplots
+    for i in range(num_columns, num_rows * columns_per_row):
+        row = i // columns_per_row
+        col = i % columns_per_row
+        fig.delaxes(axes[row, col])
 
-for i, column in enumerate(data.columns):
-    row = i // columns_per_row
-    col = i % columns_per_row
-    sns.boxplot(data=df[column], ax=axes[row, col])
-    axes[row, col].set_title(f'Boxplot of {column}')
-
-# Hide any unused subplots
-for i in range(num_columns, num_rows * columns_per_row):
-    row = i // columns_per_row
-    col = i % columns_per_row
-    fig.delaxes(axes[row, col])
-
-plt.tight_layout()
-plt.show()
+    plt.tight_layout()
+    plt.show()
 
 # for column in data.columns:
 #     plt.figure(figsize=(8, 6))
@@ -159,7 +156,7 @@ sys.path.append(ruta) para traer funciones de otras carpetas.
 ------------------------------------------------------------------------------------------------------------
 
 # PERIODOGRAMA
-    def plot_periodogram(ts, detrend='linear', ax=None):
+def plot_periodogram(ts, detrend='linear', ax=None):
     from scipy.signal import periodogram
     fs = pd.Timedelta("365D") / pd.Timedelta("1D")
     freqencies, spectrum = periodogram(
@@ -192,6 +189,51 @@ sys.path.append(ruta) para traer funciones de otras carpetas.
     ax.set_title("Periodogram")
     return ax
 
+
+# SEASONAL PLOT(series temporales)
+def seasonal_plot(X, y, period, freq, ax=None):
+    # Verificar que period y freq sean columnas en X
+    assert period in X.columns, f"'{period}' no está en las columnas de X"
+    assert freq in X.columns, f"'{freq}' no está en las columnas de X"
+    assert y in X.columns, f"'{y}' no está en las columnas de X"
+
+    if ax is None:
+        _, ax = plt.subplots()
+
+    palette = sns.color_palette("husl", n_colors=X[period].nunique())
+
+    # Convertir los datos a arrays de NumPy
+    x_data = X[freq].values
+    y_data = X[y].values
+    hue_data = X[period].values
+
+    ax = sns.lineplot(
+        x=x_data,
+        y=y_data,
+        hue=hue_data,
+        ci=False,
+        ax=ax,
+        palette=palette,
+        legend=False,
+    )
+    ax.set_title(f"Seasonal Plot ({period}/{freq})")
+
+    # Ajustar las anotaciones
+    unique_periods = np.unique(hue_data)
+    for line, name in zip(ax.lines, unique_periods):
+        y_ = line.get_ydata()[-1]
+        ax.annotate(
+            name,
+            xy=(1, y_),
+            xytext=(6, 0),
+            color=line.get_color(),
+            xycoords=ax.get_yaxis_transform(),
+            textcoords="offset points",
+            size=14,
+            va="center",
+        )
+
+    return ax
 # ONE HOT ENCODER
 
 def apply_onehot_encoder(train:pd.DataFrame, columns_to_encode:list, test:pd.DataFrame=None):

@@ -71,56 +71,22 @@
 <body>
     <div class="texto-fondo">
         <h1>Exploración del Proyecto</h1>
-        <p>Aquí puedes explorar más sobre nuestro proyecto, incluyendo imágenes y datos.</p>
+        <p>En esta página puedes ver cómo se descompone la serie.</p>
         
         <!-- Contenido adicional con imágenes, título y descripción -->
         <div class="imagen-container">
-            <img src="/static/ej_esatcionalidad_dom_fest.png" alt="Imagen 1">
-            <p>Ejemplo descriptivo de la estacionalidad de la serie</p>
+            <img src="/static/descomposicion_serie.png" alt="Imagen 1">
+            <p>Tendencia: La tendencia representa la dirección general de los datos a lo largo del tiempo.</p>
+            <p>Estacionalidad: representa patrones que se repiten a intervalos regulares dentro de la serie temporal.</p>
+            <p>Residuo: representa la variación aleatoria o el error que no se explica por la tendencia o la estacionalidad.</p>
+            <p>Observado:La serie temporal observada es la suma de la tendencia, la estacionalidad y el residuo.</p>
+            
         </div>
 
-        <div class="imagen-container">
-            <img src="/static/seasonal_plot.png" alt="Imagen 2">
-            <p>Gráfico de la serie temporal divida por años</p>
-        </div>
-
-        <div class="imagen-container para-derecha">
-            <img src="/static/test_estacionaridad.png" alt="Imagen 3">
-            <div class="descripcion">
-                <p>TEST DE ESTACIONARIDAD</p>
-                <p>Test estacionariedad serie original</p>
-                <hr>
-                <p>ADF Statistic: -5.947547831709342, p-value: 2.1859909675353553e-07</p>
-                <p>KPSS Statistic: 17.11029737480388, p-value: 0.01</p>
-                <hr>
-                <p>Test estacionariedad para serie diferenciada (order=1)</p>
-                <hr>
-                <p>ADF Statistic: -42.95828626958498, p-value: 0.0</p>
-                <p>KPSS Statistic: 0.02686913174244417, p-value: 0.1</p>
-                <hr>
-                <p>Test estacionariedad para serie diferenciada (order=2)</p>
-                <hr>
-                <p>ADF Statistic: -59.858467771039244, p-value: 0.0</p>
-                <p>KPSS Statistic: 0.005492831701150309, p-value: 0.1</p>
-            </div>
-        </div>
-
-        <div class="imagen-container">
-            <img src="/static/autocorrelacion.png" alt="Imagen 4">
-            <p>Autocorrelación</p>
-            <p>Comparativa de la autocorrealción de las series original y diferenciadas</p>
-        </div>
-
-
-        <div class="imagen-container">
-            <img src="/static/predictions_ex_3.png" alt="Imagen 4">
-            <p>Predicciones del modelo Forecaster Sarimax </p>
-            <p>Test error (mse): 37.429744773866766</p>
-        </div>
         <!-- Botón para volver a la página principal -->
         <a href="/"><button class="boton">Volver al Inicio</button></a>
-        <!-- Botón para volver a la siguiente pagina -->
-        <a href="/exploracion2"><button class="boton">Siguiente</button></a>
+        <!-- Botón para volver a la anterior pagina -->
+        <a href="/exploracion"><button class="boton">Anterior</button></a>
     </div>
 </body>
 </html>

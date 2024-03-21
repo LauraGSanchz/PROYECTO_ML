@@ -4,4 +4,4 @@ services:
   titanic_app:
     build: .
     ports:
-      - "5000:5000"
+      - "8000:8000"
