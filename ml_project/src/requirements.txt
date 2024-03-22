@@ -11,8 +11,6 @@ seaborn==0.13.2
 matplotlib==3.8.3
 
 # Modelos
-catboost
-xgboost
-skforecast==0.11.0
+skforecast
 pmdarima
-
+flask

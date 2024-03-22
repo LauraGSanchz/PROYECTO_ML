@@ -77,7 +77,7 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=True) #debug false hace que no se actualice la app y no se vean los cambos automaticamente en la web. No se puede dejar en true cuando subo la app. 
+    app.run(port=8000, host='0.0.0.0', debug=False) #debug false hace que no se actualice la app y no se vean los cambos automaticamente en la web. No se puede dejar en true cuando subo la app. 
 
 
 # @app.route('/datos/<name>', methods=['GET'])
