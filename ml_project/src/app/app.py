@@ -55,10 +55,9 @@ def predict():
     # Convertir los pasos a un entero
     steps = int(steps)
     
-    # Leer el archivo CSV como DataFrame
+    # Leer el archivo CSV como DataFrame y convertir el índice a DatetimeIndex
     try:
-        df_data = pd.read_csv(file)
-        df_data = pd.DataFrame(df_data)
+        df = pd.read_csv(file, index_col='datetime', parse_dates=['datetime'])
     except Exception as e:
         return jsonify({'error': 'Error al leer el archivo CSV: ' + str(e)}), 400
     
@@ -68,13 +67,11 @@ def predict():
     
     if modelo is not None:
         # Ahora, utiliza el número de pasos recibido y los datos exógenos para realizar la predicción
-        predictions = modelo.predict(steps=steps, exog=df_data[['GHI', 'Festivo', 'Gas', 'PotenciaViento']])
+        predictions = modelo.predict(steps=steps, exog=df[['GHI', 'Festivo', 'Gas', 'PotenciaViento']])
         # Devolver los resultados como una respuesta JSON
         return jsonify({'predictions': list(predictions)})
     else:
         return jsonify({'error': 'El modelo no pudo ser cargado.'}), 500
-
-
 
 if __name__ == '__main__':
     app.run(port=8000, host='0.0.0.0', debug=False) #debug false hace que no se actualice la app y no se vean los cambos automaticamente en la web. No se puede dejar en true cuando subo la app. 

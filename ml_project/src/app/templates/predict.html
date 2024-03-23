@@ -78,16 +78,22 @@
             event.preventDefault();
             submitForm();
         });
-
+    
         function submitForm() {
             var steps = document.getElementById('steps').value;
             var fileInput = document.getElementById('file');
             var file = fileInput.files[0];
-
+    
+            // Validar si steps es un número positivo entero entre 1 y 200
+            if (!Number.isInteger(+steps) || +steps < 1 || +steps > 200) {
+                alert("Por favor ingrese un número entero positivo entre 1 y 200 para 'steps'.");
+                return;
+            }
+    
             var formData = new FormData();
             formData.append('steps', steps);
             formData.append('data', file);
-
+    
             fetch('/predict', {
                 method: 'POST',
                 body: formData
@@ -102,5 +108,6 @@
             });
         }
     </script>
+    
 </body>
 </html>
